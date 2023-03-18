@@ -16,8 +16,8 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author Admin
  */
-@WebServlet(name = "SetStudentData", urlPatterns = {"/SetStudentData"})
-public class SetStudentData extends HttpServlet {
+@WebServlet(name = "getStudents", urlPatterns = {"/getStudents"})
+public class getStudents extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,28 +36,10 @@ public class SetStudentData extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SetStudentData</title>");
+            out.println("<title>Students Details</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<p>Servlet SetStudentData</p>");
-            String name, course;
-            int fees;
-//            id = Integer.parseInt(request.getParameter("id"));
-            name = request.getParameter("name");
-            course = request.getParameter("course");
-            fees = Integer.parseInt(request.getParameter("fees"));
-
-            Students s = new Students(name, course, fees);
-//            Students s1 = new Students();
-//            s1.setId(id);
-            
-            JdbcOperation op = new JdbcOperation();
-            String msg = op.addStudentsDetails(s);
-            out.println("<p>" + msg + "</p>");
-//            out.println("<p>ID :" + s1.getId() + "</p>");
-            out.println("<p>Name :" + s.getName() + "</p>");
-            out.println("<p>Course :" + s.getCourse() + "</p>");
-            out.println("<p>Fees :" + s.getFees() + "</p>");
+            out.println("<h4>Students Details</h4>");
             out.println("</body>");
             out.println("</html>");
         }

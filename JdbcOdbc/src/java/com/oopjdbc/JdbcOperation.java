@@ -4,8 +4,10 @@
  */
 package com.oopjdbc;
 
+import static java.lang.System.out;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class JdbcOperation {
@@ -26,5 +28,19 @@ public class JdbcOperation {
             status = e.toString();
         }
         return status;
-    }
+    };
+    
+    // GET STUDENTS
+    public String getStudentsDetails(Students s){
+        String status = "";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mis", "root", "");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from students");
+            return "Ssd";
+        } catch (Exception e) {
+            return out.println("Error : " + e.toString());
+        }
+    };
 }
