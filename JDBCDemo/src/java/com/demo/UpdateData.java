@@ -35,7 +35,7 @@ public class UpdateData extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String sId;
-            sId = request.getParameter("sId");
+            sId = request.getParameter("id");
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");

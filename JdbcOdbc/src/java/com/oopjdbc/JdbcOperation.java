@@ -38,9 +38,10 @@ public class JdbcOperation {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/mis", "root", "");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery("select * from students");
-            return "Ssd";
+            status = "Ssd";
         } catch (Exception e) {
-            return out.println("Error : " + e.toString());
+             status = e.toString();
         }
+        return status;
     };
 }

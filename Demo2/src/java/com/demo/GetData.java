@@ -2,22 +2,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.oopjdbc;
+package com.demo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.*;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "SetStudentData", urlPatterns = {"/SetStudentData"})
-public class SetStudentData extends HttpServlet {
+public class GetData extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,29 +35,24 @@ public class SetStudentData extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SetStudentData</title>");
+            out.println("<title>Servlet GetData</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<p>Servlet SetStudentData</p>");
-            String name, course;
-            int fees;
-//            id = Integer.parseInt(request.getParameter("id"));
-            name = request.getParameter("name");
-            course = request.getParameter("course");
-            fees = Integer.parseInt(request.getParameter("fees"));
 
-            Students s = new Students(name, course, fees);
-//            Students s1 = new Students();
-//            s1.setId(id);
-            
-            JdbcOperation op = new JdbcOperation();
-            String msg = op.addStudentsDetails(s);
-            out.println("<p>" + msg + "</p>");
-//            out.println("<p>ID :" + s1.getId() + "</p>");
-            out.println("<p>Name :" + s.getName() + "</p>");
-            out.println("<p>Course :" + s.getCourse() + "</p>");
-            out.println("<p>Fees :" + s.getFees() + "</p>");
-            out.println("<a href=\"getStudents\">Home</a>");
+            Student s1 = new Student(101, "Ramesh");
+            Student s2 = new Student(102, "Suresh");
+            Student s3 = new Student(103, "Ganesh");
+            Student s4 = new Student(104, "Dhanesh");
+
+            ArrayList<Student> data = new ArrayList();
+            data.add(s1);
+            data.add(s2);
+            data.add(s3);
+            data.add(s3);
+            for (int i = 0; i < data.size(); i++) {
+                out.println(data.get(i).getName());
+                out.println(data.get(i).getName());
+            }
             out.println("</body>");
             out.println("</html>");
         }

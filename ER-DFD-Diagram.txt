@@ -1,0 +1,92 @@
+courses (#cid,cname,fees,dur)
+students (#sid,sname,contact,email,city,cid)
+payments (#rid,sid,pdate,amt)
+
+
+emi : 
+
+S101
+
+
+1: CREATE DATABASE smDB;
+
+#courses (#cid,cname,fees,dur)
+CREATE TABLE courses (
+cid int PRIMARY KEY AUTO_INCREMENT,
+cname varchar(30) NOT NULL unique,
+fees int NOT NULL,
+dur int NOT NULL
+);
+
+
+insert into courses values(101,'Full Stack Development',120000,15);
+insert into courses values(102,'Data Science',110000,12);
+insert into courses values(103,'Android Development',80000,10);
+insert into courses values(104,'DotNET Certification',85000,15);
+insert into courses values(105,'Ethical Hacking',45000,12);
+
+#students (#sid,sname,contact,email,city,cid)
+
+CREATE TABLE students (
+sid int PRIMARY KEY AUTO_INCREMENT,
+sname varchar(100) NOT NULL,
+contact char(10) unique,
+email varchar(50) unique,
+city varchar(50),
+cid int NOT NULL,
+constraint f1 FOREIGN KEY(cid) references courses(cid)
+);
+
+insert into students values(1001,'Sameera Takki','9876543211','sameera@gmail.com','Mumbai',101);
+insert into students values(1002,'Poonam Patil','9876543212','poonam@gmail.com','Pune',102);
+insert into students values(1003,'Kavya Shetty','9876543213','kavya@gmail.com','Pune',104);
+insert into students values(1004,'Dilip More','9876543214','dilip@gmail.com','Mumbai',101);
+insert into students values(1005,'Sachin Tiwari','9876543215','sachin@gmail.com','Surat',102);
+insert into students values(1006,'Kalpesh Patil','9876543216','patil@gmail.com','Surat',103);
+insert into students values(1007,'Sarvesh Vishwakarma','9876543217','sarvesh@gmail.com','Thane',105);
+
+#payments (#rid,sid,pdate,amt)
+CREATE TABLE payments(
+rid int PRIMARY KEY  AUTO_INCREMENT,
+sid int,
+pdate date,
+amt int,
+constraint f2 FOREIGN KEY(sid) references students(sid)
+);
+
+insert into payments values(10001,1001,'2022-12-15',5000);
+insert into payments values(10002,1002,'2022-12-15',8000);
+insert into payments values(10003,1003,'2022-12-15',5000);
+insert into payments values(10004,1004,'2022-12-15',10000);
+insert into payments values(10005,1001,'2022-12-20',8000);
+insert into payments values(10006,1002,'2022-12-20',15000);
+insert into payments values(10007,1001,'2022-12-28',10000);
+insert into payments values(10008,1005,'2022-12-28',20000);
+insert into payments values(10009,1006,'2022-12-30',8000);
+insert into payments values(10010,1002,'2022-12-31',25000);
+insert into payments values(10011,1007,'2023-01-15',8000);
+
+
+
+select sid,sname,cid,cname,fees
+from courses c,students s,payments p
+where c.cid=s.cid and p.sid=s.sid;
+
+
+select s.sid,sname,s.cid,cname,fees
+from courses c,students s,payments p
+where c.cid=s.cid and p.sid=s.sid
+group by s.sid;
+
+
+
+
+select s.sid,sname,s.cid,cname,fees,sum(amt) as PAID,fees-sum(amt) as BALANCE
+from courses c,students s,payments p
+where c.cid=s.cid and p.sid=s.sid
+group by s.sid;
+
+select s.sid,sname,s.cid,cname,fees,sum(amt) as PAID,fees-sum(amt) as BALANCE
+from courses c,students s,payments p
+where s.sid = "1001"
+group by s.sid;
