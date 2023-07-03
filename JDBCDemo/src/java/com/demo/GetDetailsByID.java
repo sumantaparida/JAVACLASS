@@ -6,11 +6,11 @@ package com.demo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 
 /**
@@ -45,7 +45,7 @@ public class GetDetailsByID extends HttpServlet {
             out.println("<h3> Selected id is : " + sId+"</h3>");
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", "root", "");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/smDB", "root", "");
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery("select * from students where id="+sId);
                 out.println("<table>");

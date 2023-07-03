@@ -6,10 +6,10 @@ package com.demo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 
 /**
@@ -38,21 +38,21 @@ public class GetData extends HttpServlet {
             out.println("<title>Servlet GetData</title>");
             out.println("</head>");
             out.println("<body>");
+
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ims", "root", "");
+                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/smDB", "root", "");
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery("select * from students");
                 out.println("<table border=1 width=600>");
                 out.println("<tr><th>ID</th><th>Name</th><th>Course</th><th>Fees</th><th colspan=2>Action</th></tr>");
                 while (rs.next()) {
-                    out.println("<tr><td>"+rs.getInt(1)+"</td><td>"+rs.getString(2)+"</td><td>"+rs.getString(3)+"</td><td>"+rs.getInt(4)+"</td><td><a href=\"GetDetailsByID?sId="+rs.getInt(1)+ "&sName="+rs.getString(2)+ "&sCourse="+rs.getString(3)+ "\">Edit</a></td><td><a href=\"DeleteData\">Delete</a></td></tr>");
+                    out.println("<tr><td>" + rs.getInt(1) + "</td><td>" + rs.getString(2) + "</td><td>" + rs.getString(3) + "</td><td>" + rs.getInt(4) + "</td><td><a href=\"GetDetailsByID?sId=" + rs.getInt(1) + "&sName=" + rs.getString(2) + "&sCourse=" + rs.getString(3) + "\">Edit</a></td><td><a href=\"DeleteData\">Delete</a></td></tr>");
                 }
                 out.println("</table>");
             } catch (Exception e) {
                 out.println("Error : " + e.toString());
             }
-
             out.println("</body>");
             out.println("</html>");
         }
