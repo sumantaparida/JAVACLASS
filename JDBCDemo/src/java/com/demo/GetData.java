@@ -38,16 +38,19 @@ public class GetData extends HttpServlet {
             out.println("<title>Servlet GetData</title>");
             out.println("</head>");
             out.println("<body>");
-
+            out.println("<div>");
+            out.println("Get student details");
+            out.println("<div>");
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/smDB", "root", "");
+                Connection con = DriverManager.getConnection("jdbc:mysql://ocalhost:3306/smdb", "root", "");
                 Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery("select * from students");
                 out.println("<table border=1 width=600>");
                 out.println("<tr><th>ID</th><th>Name</th><th>Course</th><th>Fees</th><th colspan=2>Action</th></tr>");
                 while (rs.next()) {
-                    out.println("<tr><td>" + rs.getInt(1) + "</td><td>" + rs.getString(2) + "</td><td>" + rs.getString(3) + "</td><td>" + rs.getInt(4) + "</td><td><a href=\"GetDetailsByID?sId=" + rs.getInt(1) + "&sName=" + rs.getString(2) + "&sCourse=" + rs.getString(3) + "\">Edit</a></td><td><a href=\"DeleteData\">Delete</a></td></tr>");
+                    //out.println("<tr><td>" + rs.getInt(1) + "</td><td>" + rs.getString(2) + "</td><td>" + rs.getString(3) + "</td><td>" + rs.getInt(4) + "</td><td><a href=\"GetDetailsByID?sId=" + rs.getInt(1) + "&sName=" + rs.getString(2) + "&sCourse=" + rs.getString(3) + "\">Edit</a></td><td><a href=\"DeleteData\">Delete</a></td></tr>");
+                    out.println("Art Beats");
                 }
                 out.println("</table>");
             } catch (Exception e) {

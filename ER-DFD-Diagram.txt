@@ -72,14 +72,9 @@ select sid,sname,cid,cname,fees
 from courses c,students s,payments p
 where c.cid=s.cid and p.sid=s.sid;
 
-
-select s.sid,sname,s.cid,cname,fees
+select s.sid,s.sname,s.contact,s.email,c.cname,c.fees
 from courses c,students s,payments p
-where c.cid=s.cid and p.sid=s.sid
-group by s.sid;
-
-
-
+where c.cid=s.cid and p.sid=s.sid;
 
 select s.sid,sname,s.cid,cname,fees,sum(amt) as PAID,fees-sum(amt) as BALANCE
 from courses c,students s,payments p
@@ -90,3 +85,12 @@ select s.sid,sname,s.cid,cname,fees,sum(amt) as PAID,fees-sum(amt) as BALANCE
 from courses c,students s,payments p
 where s.sid = "1001"
 group by s.sid;
+
+select s.sid,sname,s.cid,cname,fees
+from courses c,students s,payments p
+where c.cid=s.cid and p.sid=s.sid
+group by s.sid;
+
+select s.sid,s.sname,s.contact,s.email,c.cname,c.fees
+from courses c,students s
+where c.cid=s.cid;

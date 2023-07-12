@@ -16,7 +16,7 @@ insert into students values(104,'Sandhya Menon','Animation',85000);
 insert into students values(105,'Kavya Shetty','Tally',5000);
 insert into students values(106,'Sanjay Raoul','MS-Office',5000);
 insert into students values(107,'Sakshi Yadav','AutoCAD',25000);
-indert into students(name, course, fees) value('Sumanta', 'Phython', 30000);
+insert into students(name, course, fees) value('Sumanta', 'Phython', 30000);
 
 
 

@@ -1,0 +1,29 @@
+Students(id|name|course|fees)
+
+class Name : Students
+data members : id|name|copurse|fees
+
+create database info;
+use info;
+
+class Students{
+private int id,fees;
+private String name,course;
+}
+
+create table students(
+id int,
+name varchar(20), 
+course varchar(20), 
+fees int
+);
+
+insert into students values (101,'Ramesh Paswan','FYJC',45000);
+insert into students values (102,'Kritika Gurav','SYJC',50000);
+insert into students values (103,'Karishma Tanda','TYBCOM',60000);
+insert into students values (104,'Sameera Takki','FYJC',45000);
+
+
+
+select name from students
+where name = "Samiksha";
